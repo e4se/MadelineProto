@@ -143,8 +143,12 @@ final class ProcessRunner extends RunnerAbstract
 
         foreach ($paths as $path) {
             $path .= \DIRECTORY_SEPARATOR.$executable;
-            if (\is_executable($path)) {
-                return self::$binaryPath = $path;
+            try{
+                if (\is_executable($path)) {
+                    return self::$binaryPath = $path;
+                }
+            }catch(\Throwable $e){
+                
             }
         }
 
